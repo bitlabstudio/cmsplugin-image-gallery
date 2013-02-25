@@ -29,13 +29,6 @@ Add ``filer_gallery`` to your ``INSTALLED_APPS``::
         'filer_gallery',
     )
 
-Hook this app into your ``urls.py``::
-
-    urlpatterns = patterns('',
-        ...
-        url(r'^gallery/$', include('filer_gallery.urls')),
-    )
-
 
 Usage
 -----

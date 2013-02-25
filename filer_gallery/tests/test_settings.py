@@ -57,7 +57,6 @@ EXTERNAL_APPS = [
     'django.contrib.sites',
     'cms',
     'cms.plugins.text',
-    'cms.plugins.picture',
     'sekizai',
     'mptt',
     'menus',

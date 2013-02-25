@@ -1,4 +1,7 @@
-{% load i18n thumbnail %}
+{% load i18n thumbnail placeholder_tags %}
+<h1>{{ gallery.title }}</h1>
+<h2>{{ gallery.date|date }}, {{ gallery.location }}</h2>
+<p>{% render_placeholder gallery.description "description" %}</p>
 <div>
     {% for image in images %}
         <img src="{% thumbnail image.file 200x200 crop upscale %}">

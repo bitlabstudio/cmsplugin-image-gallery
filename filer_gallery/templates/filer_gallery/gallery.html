@@ -1,0 +1,6 @@
+{% load i18n thumbnail %}
+<div>
+    {% for image in images %}
+        <img src="{% thumbnail image.file 200x200 crop upscale %}">
+    {% endfor %}
+</div>

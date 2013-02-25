@@ -1,0 +1,21 @@
+# Install these requirements if you wish to contribute to this project.
+
+# ===========================================================================
+# Packages essential to this app. Needed by anyone who wants to use this app.
+# ===========================================================================
+Django==1.4.3
+django-cms==2.3.5
+django-filer==0.9.3
+Pillow==1.7.8
+South==0.7.6
+
+
+# ==============================================================
+# Packages needed for running the tests. Needed by contributors.
+# ==============================================================
+Fabric
+factory_boy==1.2.0
+mock
+django-nose==1.1
+coverage==3.5.3
+django-coverage==1.2.2

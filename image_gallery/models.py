@@ -1,4 +1,4 @@
-"""Models for the ``filer_gallery`` app."""
+"""Models for the ``image_gallery`` app."""
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 

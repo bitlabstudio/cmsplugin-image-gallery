@@ -3,7 +3,7 @@ include LICENSE
 include DESCRIPTION
 include CHANGELOG.txt
 include README.md
-graft filer_gallery
+graft image_gallery
 global-exclude *.orig *.pyc *.log
-prune filer_gallery/tests/coverage/
-prune filer_gallery/.ropeproject/
+prune image_gallery/tests/coverage/
+prune image_gallery/.ropeproject/

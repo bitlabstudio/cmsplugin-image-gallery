@@ -1,8 +1,8 @@
-"""Tests for models of the ``filer_gallery``` application."""
+"""Tests for models of the ``image_gallery``` application."""
 from django.test import TestCase
 
-from filer_gallery.cms_plugins import CMSGalleryPlugin
-from filer_gallery.tests.factories import GalleryPluginFactory
+from image_gallery.cms_plugins import CMSGalleryPlugin
+from image_gallery.tests.factories import GalleryPluginFactory
 
 
 class CMSGalleryPluginTestCase(TestCase):

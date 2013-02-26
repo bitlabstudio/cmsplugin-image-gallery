@@ -1,7 +1,7 @@
-"""Factories for the models of the ``filer_gallery`` app."""
+"""Factories for the models of the ``image_gallery`` app."""
 from factory import Factory, SubFactory
 
-from filer_gallery.models import Gallery, GalleryPlugin
+from image_gallery.models import Gallery, GalleryPlugin
 
 
 class GalleryFactory(Factory):

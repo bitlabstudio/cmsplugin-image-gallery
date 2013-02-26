@@ -12,7 +12,7 @@ DATABASES = {
     }
 }
 
-ROOT_URLCONF = 'filer_gallery.tests.urls'
+ROOT_URLCONF = 'image_gallery.tests.urls'
 
 PROJECT_ROOT = os.path.realpath(
     os.path.join(os.path.dirname(__file__), "../"))
@@ -67,7 +67,7 @@ EXTERNAL_APPS = [
 
 INTERNAL_APPS = [
     'django_nose',
-    'filer_gallery',
+    'image_gallery',
 ]
 
 INSTALLED_APPS = EXTERNAL_APPS + INTERNAL_APPS

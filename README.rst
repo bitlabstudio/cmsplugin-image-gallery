@@ -16,17 +16,17 @@ You need to install the following prerequisites in order to use this app::
 
 If you want to install the latest stable release from PyPi::
 
-    $ pip install django-filer-gallery
+    $ pip install cmsplugin-image-gallery
 
 If you feel adventurous and want to install the latest commit from GitHub::
 
-    $ pip install -e git://github.com/bitmazk/django-filer-gallery.git#egg=filer_gallery
+    $ pip install -e git://github.com/bitmazk/cmsplugin-image-gallery.git#egg=image_gallery
 
-Add ``filer_gallery`` to your ``INSTALLED_APPS``::
+Add ``image_gallery`` to your ``INSTALLED_APPS``::
 
     INSTALLED_APPS = (
         ...,
-        'filer_gallery',
+        'image_gallery',
     )
 
 

@@ -10,7 +10,7 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         # Adding model 'Gallery'
-        db.create_table('filer_gallery_gallery', (
+        db.create_table('image_gallery_gallery', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('title', self.gf('django.db.models.fields.CharField')(max_length=100)),
             ('date', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True)),
@@ -18,19 +18,19 @@ class Migration(SchemaMigration):
             ('description', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['cms.Placeholder'], null=True)),
             ('folder', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['filer.Folder'])),
         ))
-        db.send_create_signal('filer_gallery', ['Gallery'])
+        db.send_create_signal('image_gallery', ['Gallery'])
 
         # Adding model 'GalleryPlugin'
         db.create_table('cmsplugin_galleryplugin', (
             ('cmsplugin_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['cms.CMSPlugin'], unique=True, primary_key=True)),
-            ('gallery', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['filer_gallery.Gallery'])),
+            ('gallery', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['image_gallery.Gallery'])),
         ))
-        db.send_create_signal('filer_gallery', ['GalleryPlugin'])
+        db.send_create_signal('image_gallery', ['GalleryPlugin'])
 
 
     def backwards(self, orm):
         # Deleting model 'Gallery'
-        db.delete_table('filer_gallery_gallery')
+        db.delete_table('image_gallery_gallery')
 
         # Deleting model 'GalleryPlugin'
         db.delete_table('cmsplugin_galleryplugin')
@@ -108,7 +108,7 @@ class Migration(SchemaMigration):
             'tree_id': ('django.db.models.fields.PositiveIntegerField', [], {'db_index': 'True'}),
             'uploaded_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'})
         },
-        'filer_gallery.gallery': {
+        'image_gallery.gallery': {
             'Meta': {'object_name': 'Gallery'},
             'date': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'}),
             'description': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['cms.Placeholder']", 'null': 'True'}),
@@ -117,11 +117,11 @@ class Migration(SchemaMigration):
             'location': ('django.db.models.fields.CharField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         },
-        'filer_gallery.galleryplugin': {
+        'image_gallery.galleryplugin': {
             'Meta': {'object_name': 'GalleryPlugin', 'db_table': "'cmsplugin_galleryplugin'", '_ormbases': ['cms.CMSPlugin']},
             'cmsplugin_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['cms.CMSPlugin']", 'unique': 'True', 'primary_key': 'True'}),
-            'gallery': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['filer_gallery.Gallery']"})
+            'gallery': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['image_gallery.Gallery']"})
         }
     }
 
-    complete_apps = ['filer_gallery']
+    complete_apps = ['image_gallery']

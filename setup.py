@@ -1,6 +1,6 @@
 import os
 from setuptools import setup, find_packages
-import filer_gallery
+import image_gallery
 
 
 def read(fname):
@@ -12,7 +12,7 @@ def read(fname):
 
 setup(
     name="django-filer-gallery",
-    version=filer_gallery.__version__,
+    version=image_gallery.__version__,
     description=read('DESCRIPTION'),
     long_description=read('README.rst'),
     license='The MIT License',
@@ -31,5 +31,5 @@ setup(
         'django-coverage',
         'mock',
     ],
-    test_suite='filer_gallery.tests.runtests.runtests',
+    test_suite='image_gallery.tests.runtests.runtests',
 )

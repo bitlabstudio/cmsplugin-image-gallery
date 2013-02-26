@@ -1,7 +1,7 @@
-"""Tests for the models of the ``filer_gallery`` app."""
+"""Tests for the models of the ``image_gallery`` app."""
 from django.test import TestCase
 
-from filer_gallery.models import Gallery
+from image_gallery.models import Gallery
 
 
 class GalleryTestCase(TestCase):

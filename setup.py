@@ -11,16 +11,16 @@ def read(fname):
 
 
 setup(
-    name="django-filer-gallery",
+    name="cmsplugin-image-gallery",
     version=image_gallery.__version__,
     description=read('DESCRIPTION'),
     long_description=read('README.rst'),
     license='The MIT License',
     platforms=['OS Independent'],
-    keywords='django, filer, gallery, django-filer',
+    keywords='django, filer, gallery, django-filer, image',
     author='Tobias Lorenz',
     author_email='tobias.lorenz@bitmazk.com',
-    url="https://github.com/bitmazk/django-filer-gallery",
+    url="https://github.com/bitmazk/cmsplugin-image-gallery",
     packages=find_packages(),
     include_package_data=True,
     tests_require=[

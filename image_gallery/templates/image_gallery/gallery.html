@@ -2,8 +2,8 @@
 <h1>{{ gallery.title }}</h1>
 <h2>{{ gallery.date|date }}, {{ gallery.location }}</h2>
 <p>{% render_placeholder gallery.description "description" %}</p>
-<div>
+<ul class="imageGallery">
     {% for image in images %}
-        <img src="{% thumbnail image.file 200x200 crop upscale %}">
+        <li><img src="{% thumbnail image.file 200x200 crop upscale %}"></li>
     {% endfor %}
-</div>
+</ul>

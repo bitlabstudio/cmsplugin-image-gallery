@@ -9,7 +9,7 @@ from filer.fields.folder import FilerFolderField
 
 class Gallery(models.Model):
     """
-    Stores the amount of API calls per user per day or month.
+    Model to display a filer folder's contents and provide extra information.
 
     :title: Gallery title.
     :date: Date/Time of the gallery event.

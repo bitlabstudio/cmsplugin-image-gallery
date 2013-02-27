@@ -1,4 +1,4 @@
-Django Filer Gallery
+CMSplugin Image Gallery
 ====================
 
 A Django application adding filer-based galleries to Django-CMS.
@@ -46,7 +46,7 @@ If you want to contribute to this project, please perform the following steps::
 
     # Fork this repository
     # Clone your fork
-    $ mkvirtualenv -p python2.7 django-filer-gallery
+    $ mkvirtualenv -p python2.7 cmsplugin-image-gallery
     $ pip install -r requirements.txt
     $ ./logger/tests/runtests.sh
     # You should get no failing tests

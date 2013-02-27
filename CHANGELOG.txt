@@ -1,11 +1,3 @@
-=== (ongoing)===
-
-* Added basic RateLimit class
-* Logging and limiting api calls
-* Added urls
-* Added API view
-* Added decorator for basic http authentication
-
-=== 0.1 ===
+=== 0.1 (ongoing)===
 
 Initial commit

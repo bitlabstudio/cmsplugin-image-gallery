@@ -38,9 +38,9 @@ class RenderPicturesTestCase(TestCase):
         # Returns one picture, because amount was set to `1`
         ImageFactory(folder=self.gallery.folder)
         ImageFactory(folder=self.gallery.folder)
-        self.assertEqual(
-            render_pictures(self.context, 1).get('pictures').count(), 1)
+        self.assertEqual(render_pictures(self.context, 'recent', 1).get(
+            'pictures').count(), 1)
 
         # Returns three random pictures
-        self.assertEqual(render_pictures(self.context, selection='random').get(
-            'pictures').count(), 3)
+        self.assertEqual(
+            render_pictures(self.context, 'random').get('pictures').count(), 3)

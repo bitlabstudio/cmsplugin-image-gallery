@@ -1,3 +1,4 @@
 === 0.1 (ongoing)===
 
-Initial commit
+- Added a template tag to display picture lists
+- Initial commit

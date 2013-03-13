@@ -55,18 +55,25 @@ EXTERNAL_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
     'django.contrib.sites',
+    'django.contrib.admin',
+    'django.contrib.admindocs',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.messages',
+    'django.contrib.sessions',
+    'django.contrib.staticfiles',
+    'django.contrib.sitemaps',
+    'django.contrib.sites',
+    'django_nose',
     'cms',
-    'cms.plugins.text',
-    'sekizai',
     'mptt',
-    'menus',
-    'south',
+    'sekizai',
+    'cms.plugins.text',
     'filer',
     'easy_thumbnails',
 ]
 
 INTERNAL_APPS = [
-    'django_nose',
     'image_gallery',
 ]
 

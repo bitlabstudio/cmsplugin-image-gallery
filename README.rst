@@ -38,6 +38,15 @@ First create a gallery object with a filer folder.
 Create a CMS page with a placeholder and simply insert the plugin
 ``Filer Gallery``.
 
+You can also use our template tag to display a list of pictures::
+
+    {% render_pictures %}
+
+...for the last 3 uploaded pictures. You can use the selection parameters
+``recent`` (default) and ``random`` and set an amount of pictures to display::
+
+    {% render_pictures 'random' 10 %}
+
 
 Contribute
 ----------

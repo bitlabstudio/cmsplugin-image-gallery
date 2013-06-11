@@ -6,4 +6,9 @@ from cms.admin.placeholderadmin import PlaceholderAdmin
 from image_gallery.models import Gallery
 
 
-admin.site.register(Gallery, PlaceholderAdmin)
+class GalleryAdmin(PlaceholderAdmin):
+    """Custom admin for the ``Gallery`` model."""
+    list_display = ('title', 'date', 'location', 'folder')
+
+
+admin.site.register(Gallery, GalleryAdmin)

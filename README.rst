@@ -35,8 +35,20 @@ Usage
 
 First create a gallery object with a filer folder.
 
+Using the apphook
++++++++++++++++++
+
+Simply create a django-cms page and select it in the ``Application`` field of
+the ``Advanced Settings``.
+
+Using the cmsplugin
++++++++++++++++++++
+
 Create a CMS page with a placeholder and simply insert the plugin
 ``Filer Gallery``.
+
+Using the template tags
++++++++++++++++++++++++
 
 You can also use our template tag to display a list of pictures::
 
@@ -46,6 +58,17 @@ You can also use our template tag to display a list of pictures::
 ``recent`` (default) and ``random`` and set an amount of pictures to display::
 
     {% render_pictures 'random' 10 %}
+
+
+Settings
+--------
+
+GALLERY_PAGINATION_AMOUNT
++++++++++++++++++++++++++
+
+Default: 10
+
+Amount of galleries to display in the list view.
 
 
 Contribute

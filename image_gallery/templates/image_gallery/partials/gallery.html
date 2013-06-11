@@ -1,0 +1,9 @@
+{% load i18n thumbnail placeholder_tags %}
+<h1>{{ gallery.title }}</h1>
+<h2>{% if gallery.date %}{{ gallery.date|date }}, {% endif %}{{ gallery.location }}</h2>
+<p>{% render_placeholder gallery.description "description" %}</p>
+<ul class="imageGallery">
+    {% for image in gallery.get_folder_images.all %}
+        <li><img src="{% thumbnail image.file 200x200 crop upscale %}" alt=""></li>
+    {% endfor %}
+</ul>

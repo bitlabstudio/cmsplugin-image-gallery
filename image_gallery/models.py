@@ -5,6 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from cms.models import CMSPlugin
 from cms.models.fields import PlaceholderField
 from filer.fields.folder import FilerFolderField
+from filer.models.imagemodels import Image
 
 
 class Gallery(models.Model):
@@ -45,6 +46,11 @@ class Gallery(models.Model):
 
     def __unicode__(self):
         return '{0}'.format(self.title)
+
+    def get_folder_images(self):
+        """Returns a set of images, which have been placed in this folder."""
+        qs_files = self.folder.files.instance_of(Image)
+        return qs_files.filter(is_public=True)
 
 
 class GalleryPlugin(CMSPlugin):

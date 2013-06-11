@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load i18n thumbnail placeholder_tags %}
+{% load url from future %}
+
+{% block main %}
+{% for gallery in object_list %}
+    <div>
+        {% if gallery.get_folder_images.all %}
+            <img src="{% thumbnail gallery.get_folder_images.all.0.file 100x100 crop upscale %}" alt="" />
+        {% endif %}
+        <h2><a href="{% url "image_gallery_detail" pk=gallery.pk %}">{{ gallery.title }}</a></h2>
+        <span>{% if gallery.date %}{{ gallery.date|date }}, {% endif %}{{ gallery.location }}</span>
+    </div>
+{% endfor %}
+{% endblock %}

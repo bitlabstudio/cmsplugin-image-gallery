@@ -1,5 +1,8 @@
 === ongoing ===
 
+
+=== 0.3 ===
+
 - Sorting ListView items via date
 - ListView can sort via category when receiving a "category" get parameter
 - Added GalleryCategory model

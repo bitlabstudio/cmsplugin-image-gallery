@@ -1,5 +1,6 @@
 === ongoing ===
 
+- Sorting ListView items via date
 - Added GalleryCategory model
 
 === 0.2 ===

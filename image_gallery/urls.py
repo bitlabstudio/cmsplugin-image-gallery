@@ -13,6 +13,8 @@ urlpatterns = patterns(
         name='image_gallery_detail'),
 
     url(r'^$',
-        ListView.as_view(model=Gallery, paginate_by=PAGINATION_AMOUNT),
+        ListView.as_view(
+            model=Gallery, paginate_by=PAGINATION_AMOUNT,
+            queryset=Gallery.objects.all().order_by('date')),
         name='image_gallery_list'),
 )

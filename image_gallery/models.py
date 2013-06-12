@@ -77,6 +77,9 @@ class GalleryCategory(models.Model):
         verbose_name=_('Slug'),
     )
 
+    def __unicode__(self):
+        return self.name
+
 
 class GalleryPlugin(CMSPlugin):
     """Plugin model to link to a specific gallery instance."""

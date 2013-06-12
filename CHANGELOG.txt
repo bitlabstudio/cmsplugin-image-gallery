@@ -1,5 +1,7 @@
 === ongoing ===
 
+- Added GalleryCategory model
+
 === 0.2 ===
 
 - Added apphook plus DetailView and ListView

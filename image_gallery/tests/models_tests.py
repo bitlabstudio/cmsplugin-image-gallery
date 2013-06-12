@@ -2,7 +2,11 @@
 from django.test import TestCase
 
 from ..models import Gallery
-from .factories import GalleryFactory
+from .factories import (
+    GalleryFactory,
+    GalleryCategoryFactory,
+    GalleryPluginFactory,
+)
 
 
 class GalleryTestCase(TestCase):
@@ -19,3 +23,23 @@ class GalleryTestCase(TestCase):
         gallery = GalleryFactory()
         self.assertEqual(gallery.get_folder_images().count(), 0, msg=(
             'Should return an empty image list.'))
+
+
+class GalleryCategoryTestCase(TestCase):
+    """Tests for the ``GalleryCategory`` model class."""
+    longMessage = True
+
+    def test_instantiation(self):
+        """Test instantiation of the ``GalleryCategory`` model."""
+        gallerycategory = GalleryCategoryFactory()
+        self.assertTrue(gallerycategory.pk)
+
+
+class GalleryPluginTestCase(TestCase):
+    """Tests for the ``GalleryPlugin`` model class."""
+    longMessage = True
+
+    def test_instantiation(self):
+        """Test instantiation of the ``GalleryPlugin`` model."""
+        galleryplugin = GalleryPluginFactory()
+        self.assertTrue(galleryplugin.pk)

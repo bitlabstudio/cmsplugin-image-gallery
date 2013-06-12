@@ -19,6 +19,12 @@ class Gallery(models.Model):
     :folder: Linked folder of the filer app.
 
     """
+    category = models.ForeignKey(
+        'image_gallery.GalleryCategory',
+        verbose_name=_('Category'),
+        blank=True, null=True,
+    )
+
     title = models.CharField(
         max_length=100,
         verbose_name=_('Title'),
@@ -51,6 +57,25 @@ class Gallery(models.Model):
         """Returns a set of images, which have been placed in this folder."""
         qs_files = self.folder.files.instance_of(Image)
         return qs_files.filter(is_public=True)
+
+
+class GalleryCategory(models.Model):
+    """
+    Is used to categorize galleries.
+
+    :name: Then human readable name of the category.
+    :slug: The slug of the category
+
+    """
+    name = models.CharField(
+        max_length=256,
+        verbose_name=_('Name'),
+    )
+
+    slug = models.SlugField(
+        max_length=32,
+        verbose_name=_('Slug'),
+    )
 
 
 class GalleryPlugin(CMSPlugin):

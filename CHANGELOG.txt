@@ -1,5 +1,8 @@
 === ongoing ===
 
+=== 0.3.1 ===
+
+- Added categories to the context of the GalleryListView
 
 === 0.3 ===
 

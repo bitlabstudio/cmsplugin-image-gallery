@@ -2,7 +2,7 @@
 from django.views.generic import ListView
 
 from .app_settings import PAGINATION_AMOUNT
-from .models import Gallery
+from .models import Gallery, GalleryCategory
 
 
 class GalleryListView(ListView):
@@ -10,8 +10,15 @@ class GalleryListView(ListView):
     paginate_by = PAGINATION_AMOUNT
 
     def get_queryset(self):
-        category = self.request.GET.get('category')
-        if category:
-            return Gallery.objects.filter(category__slug=category).order_by(
-                'date')
+        self.category = self.request.GET.get('category')
+        if self.category:
+            return Gallery.objects.filter(
+                category__slug=self.category).order_by('date')
         return Gallery.objects.all().order_by('date')
+
+    def get_context_data(self, **kwargs):
+        ctx = super(GalleryListView, self).get_context_data(**kwargs)
+        ctx.update({'categories': GalleryCategory.objects.all()})
+        if self.category:
+            ctx.update({'active_category': self.category})
+        return ctx

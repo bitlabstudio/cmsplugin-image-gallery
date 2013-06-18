@@ -1,5 +1,7 @@
 === ongoing ===
 
+- Added get_absolute_url method for Gallery model
+
 === 0.3.1 ===
 
 - Added categories to the context of the GalleryListView

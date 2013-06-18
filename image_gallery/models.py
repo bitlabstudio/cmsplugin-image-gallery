@@ -1,4 +1,5 @@
 """Models for the ``image_gallery`` app."""
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -52,6 +53,9 @@ class Gallery(models.Model):
 
     def __unicode__(self):
         return '{0}'.format(self.title)
+
+    def get_absolute_url(self):
+        return reverse('image_gallery_detail', kwargs={'pk': self.pk, })
 
     def get_folder_images(self):
         """Returns a set of images, which have been placed in this folder."""

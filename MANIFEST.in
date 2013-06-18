@@ -5,5 +5,5 @@ include CHANGELOG.txt
 include README.md
 graft image_gallery
 global-exclude *.orig *.pyc *.log *.swp
-prune image_gallery/tests/coverage/
-prune image_gallery/.ropeproject/
+prune image_gallery/tests/coverage
+prune image_gallery/.ropeproject

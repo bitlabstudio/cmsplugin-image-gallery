@@ -1,5 +1,8 @@
 === ongoing ===
 
+
+=== 0.4 ===
+
 - Added is_published field to Gallery model
 - Changed default sorting of gallery list to descending
 

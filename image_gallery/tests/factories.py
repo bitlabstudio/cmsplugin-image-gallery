@@ -28,6 +28,7 @@ class GalleryFactory(Factory):
     title = 'Test Gallery'
     folder = SubFactory(FolderFactory)
     category = SubFactory(GalleryCategoryFactory)
+    is_published = True
 
 
 class GalleryPluginFactory(Factory):

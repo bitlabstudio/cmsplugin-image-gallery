@@ -1,4 +1,6 @@
 """Models for the ``image_gallery`` app."""
+from itertools import chain
+
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -67,6 +69,20 @@ class Gallery(models.Model):
         """Returns a set of images, which have been placed in this folder."""
         qs_files = self.folder.files.instance_of(Image)
         return qs_files.filter(is_public=True)
+
+    def get_folder_image_list(self):
+        """
+        Returns a list of images, which have been placed in this folder.
+
+        They are first sorted by name, followed by those without name, sorted
+        by file name.
+
+        """
+        qs_files = self.folder.files.instance_of(Image)
+        qs_files = qs_files.filter(is_public=True)
+        return list(chain(
+            qs_files.exclude(name='').order_by('name'),
+            qs_files.filter(name='').order_by('file')))
 
 
 class GalleryCategory(models.Model):

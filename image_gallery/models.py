@@ -18,6 +18,7 @@ class Gallery(models.Model):
     :location: Location of the gallery items.
     :description: Description of the gallery.
     :folder: Linked folder of the filer app.
+    :is_published: True if the Gallery is published or not.
 
     """
     category = models.ForeignKey(
@@ -49,6 +50,11 @@ class Gallery(models.Model):
 
     folder = FilerFolderField(
         verbose_name=_('Folder'),
+    )
+
+    is_published = models.BooleanField(
+        verbose_name=_('Is published'),
+        default=False,
     )
 
     def __unicode__(self):

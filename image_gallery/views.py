@@ -13,8 +13,9 @@ class GalleryListView(ListView):
         self.category = self.request.GET.get('category')
         if self.category:
             return Gallery.objects.filter(
-                category__slug=self.category).order_by('date')
-        return Gallery.objects.all().order_by('date')
+                is_published=True, category__slug=self.category).order_by(
+                    'date')
+        return Gallery.objects.filter(is_published=True).order_by('date')
 
     def get_context_data(self, **kwargs):
         ctx = super(GalleryListView, self).get_context_data(**kwargs)

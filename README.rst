@@ -33,7 +33,8 @@ Add ``image_gallery`` to your ``INSTALLED_APPS``::
 Usage
 -----
 
-First create a gallery object with a filer folder.
+First create a gallery object with a filer folder and set ``is_published`` to
+``True`` once you want to publish the gallery.
 
 Using the apphook
 +++++++++++++++++

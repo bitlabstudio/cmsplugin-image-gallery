@@ -1,28 +1,28 @@
 """Factories for the models of the ``image_gallery`` app."""
-from factory import Factory, LazyAttribute, SubFactory, Sequence
+from factory import DjangoModelFactory, LazyAttribute, SubFactory, Sequence
 from filer.models import Folder, Image
 
 from image_gallery.models import Gallery, GalleryCategory, GalleryPlugin
 
 
-class FolderFactory(Factory):
+class FolderFactory(DjangoModelFactory):
     FACTORY_FOR = Folder
 
     name = 'Test Folder'
 
 
-class ImageFactory(Factory):
+class ImageFactory(DjangoModelFactory):
     FACTORY_FOR = Image
 
 
-class GalleryCategoryFactory(Factory):
+class GalleryCategoryFactory(DjangoModelFactory):
     FACTORY_FOR = GalleryCategory
 
     name = Sequence(lambda i: 'name {}'.format(i))
     slug = LazyAttribute(lambda a: a.name.replace(' ', '-'))
 
 
-class GalleryFactory(Factory):
+class GalleryFactory(DjangoModelFactory):
     FACTORY_FOR = Gallery
 
     title = 'Test Gallery'
@@ -31,7 +31,7 @@ class GalleryFactory(Factory):
     is_published = True
 
 
-class GalleryPluginFactory(Factory):
+class GalleryPluginFactory(DjangoModelFactory):
     FACTORY_FOR = GalleryPlugin
 
     gallery = SubFactory(GalleryFactory)

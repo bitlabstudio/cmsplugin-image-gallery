@@ -1,6 +1,10 @@
 === ongoing ===
 
 
+=== 0.5 ===
+
+- Updated to last factory_boy
+
 === 0.4 ===
 
 - Added is_published field to Gallery model

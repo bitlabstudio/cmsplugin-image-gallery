@@ -1,5 +1,7 @@
 === ongoing ===
 
+=== 0.6 ===
+
 - Added display_type to GalleryPlugin model
 - Added new setting GALLERY_DISPLAY_TYPE_CHOICES
 - Added GalleryImageExtension model

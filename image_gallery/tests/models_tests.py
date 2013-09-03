@@ -5,6 +5,7 @@ from ..models import Gallery
 from .factories import (
     GalleryFactory,
     GalleryCategoryFactory,
+    GalleryImageExtensionFactory,
     GalleryPluginFactory,
 )
 
@@ -23,6 +24,16 @@ class GalleryTestCase(TestCase):
         gallery = GalleryFactory()
         self.assertEqual(gallery.get_folder_images().count(), 0, msg=(
             'Should return an empty image list.'))
+
+
+class GalleryImageExtensionTestCase(TestCase):
+    """Tests for the ``GalleryImageExtension`` model class."""
+    longMessage = True
+
+    def test_instantiation(self):
+        obj = GalleryImageExtensionFactory()
+        self.assertTrue(obj, msg=(
+            'Should be able to instantiate and save the object.'))
 
 
 class GalleryCategoryTestCase(TestCase):

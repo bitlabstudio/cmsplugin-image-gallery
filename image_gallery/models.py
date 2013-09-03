@@ -10,6 +10,8 @@ from cms.models.fields import PlaceholderField
 from filer.fields.folder import FilerFolderField
 from filer.models.imagemodels import Image
 
+from . import app_settings
+
 
 class Gallery(models.Model):
     """
@@ -65,8 +67,29 @@ class Gallery(models.Model):
     def get_absolute_url(self):
         return reverse('image_gallery_detail', kwargs={'pk': self.pk, })
 
+    def get_featured_images(self):
+        """
+        Returns those images of a given Gallery that are featured images.
+
+        TODO: Find a way to test this
+
+        """
+        result = []
+        for image in self.get_folder_images():
+            try:
+                if image.galleryimageextension.is_featured_image:
+                    result.append(image)
+            except GalleryImageExtension.DoesNotExist:
+                pass
+        return result
+
     def get_folder_images(self):
-        """Returns a set of images, which have been placed in this folder."""
+        """
+        Returns a set of images, which have been placed in this folder.
+
+        TODO: Find a way to test this
+
+        """
         qs_files = self.folder.files.instance_of(Image)
         return qs_files.filter(is_public=True)
 
@@ -107,9 +130,42 @@ class GalleryCategory(models.Model):
         return self.name
 
 
+class GalleryImageExtension(models.Model):
+    """
+    Adds extra fields to the FilerImage admin.
+
+    :image: The Image instance this object is extending.
+    :is_featured_image: A boolean field that can be used for example to render
+      a teaser of a gallery and only show a few featured images.
+    """
+    image = models.OneToOneField(
+        Image,
+        verbose_name=_('Image'),
+    )
+
+    is_featured_image = models.BooleanField(
+        default=False,
+        verbose_name=_('Is featured image'),
+    )
+
+
 class GalleryPlugin(CMSPlugin):
-    """Plugin model to link to a specific gallery instance."""
+    """
+    Plugin model to link to a specific gallery instance.
+
+    :gallery: The gallery instance that this plugin should render
+    :display_type: A string that will be passed to the plugin templates. This
+      allows you to render the gallery differently at different places on your
+      page.
+
+    """
     gallery = models.ForeignKey(
         Gallery,
         verbose_name=_('Gallery'),
+    )
+
+    display_type = models.CharField(
+        max_length=256,
+        choices=app_settings.DISPLAY_TYPE_CHOICES,
+        blank=True,
     )

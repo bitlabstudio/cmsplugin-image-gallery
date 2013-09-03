@@ -17,6 +17,7 @@ class CMSGalleryPlugin(CMSPluginBase):
             'gallery': instance.gallery,
             'images': instance.gallery.get_folder_images(),
             'placeholder': placeholder,
+            'display_type': instance.display_type,
         })
         return context
 

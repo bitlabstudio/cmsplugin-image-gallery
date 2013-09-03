@@ -2,8 +2,9 @@
 from django.contrib import admin
 
 from cms.admin.placeholderadmin import PlaceholderAdmin
+from filer.admin.imageadmin import ImageAdmin
 
-from image_gallery.models import Gallery, GalleryCategory
+from . import models
 
 
 class GalleryAdmin(PlaceholderAdmin):
@@ -17,5 +18,10 @@ class GalleryCategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'slug')
 
 
-admin.site.register(GalleryCategory, GalleryCategoryAdmin)
-admin.site.register(Gallery, GalleryAdmin)
+class GalleryImageInline(admin.TabularInline):
+    model = models.GalleryImageExtension
+
+
+admin.site.register(models.GalleryCategory, GalleryCategoryAdmin)
+admin.site.register(models.Gallery, GalleryAdmin)
+ImageAdmin.inlines = ImageAdmin.inlines[:] + [GalleryImageInline]

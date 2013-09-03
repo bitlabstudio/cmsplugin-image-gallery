@@ -72,6 +72,23 @@ Default: 10
 Amount of galleries to display in the list view.
 
 
+GALLERY_DISPLAY_TYPE_CHOICES
+++++++++++++++++++++++++++++
+
+Default::
+
+    (
+        ('default', _('Default')),
+        ('teaser', _('Teaser')),
+    )
+
+When you use the ``Filer Gallery`` plugin, you can select the gallery that
+should be rendered and a display type. This is useful if one and the same
+gallery should be rendrerd in different ways at different places on your
+site. The selected value will be added to the plugin template's context with
+the variable name ``{{ display_type }}``.
+
+
 Contribute
 ----------
 

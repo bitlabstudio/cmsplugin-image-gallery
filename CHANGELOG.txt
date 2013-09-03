@@ -1,5 +1,9 @@
 === ongoing ===
 
+- Added display_type to GalleryPlugin model
+- Added new setting GALLERY_DISPLAY_TYPE_CHOICES
+- Added GalleryImageExtension model
+- Added inline for image extensions to Filer's Image admin
 
 === 0.5 ===
 

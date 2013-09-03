@@ -2,7 +2,7 @@
 from factory import DjangoModelFactory, LazyAttribute, SubFactory, Sequence
 from filer.models import Folder, Image
 
-from image_gallery.models import Gallery, GalleryCategory, GalleryPlugin
+from .. import models
 
 
 class FolderFactory(DjangoModelFactory):
@@ -16,14 +16,20 @@ class ImageFactory(DjangoModelFactory):
 
 
 class GalleryCategoryFactory(DjangoModelFactory):
-    FACTORY_FOR = GalleryCategory
+    FACTORY_FOR = models.GalleryCategory
 
     name = Sequence(lambda i: 'name {}'.format(i))
     slug = LazyAttribute(lambda a: a.name.replace(' ', '-'))
 
 
+class GalleryImageExtensionFactory(DjangoModelFactory):
+    FACTORY_FOR = models.GalleryImageExtension
+
+    image = SubFactory(ImageFactory)
+
+
 class GalleryFactory(DjangoModelFactory):
-    FACTORY_FOR = Gallery
+    FACTORY_FOR = models.Gallery
 
     title = 'Test Gallery'
     folder = SubFactory(FolderFactory)
@@ -32,6 +38,6 @@ class GalleryFactory(DjangoModelFactory):
 
 
 class GalleryPluginFactory(DjangoModelFactory):
-    FACTORY_FOR = GalleryPlugin
+    FACTORY_FOR = models.GalleryPlugin
 
     gallery = SubFactory(GalleryFactory)

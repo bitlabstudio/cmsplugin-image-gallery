@@ -135,7 +135,7 @@ class GalleryCategory(models.Model):
         return self.name
 
     class Meta:
-        ordering = ('sug', )
+        ordering = ('slug', )
         verbose_name = _('Gallery Category')
         verbose_name_plural = _('Gallery Categories')
 

@@ -1,5 +1,9 @@
 === ongoing ===
 
+=== 0.6.2 ===
+
+- Fixed category ordering
+
 === 0.6.1 ===
 
 - Added german translation

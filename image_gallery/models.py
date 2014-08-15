@@ -61,6 +61,11 @@ class Gallery(models.Model):
         default=False,
     )
 
+    class Meta:
+        ordering = ('title', )
+        verbose_name = _('Gallery')
+        verbose_name_plural = _('Galleries')
+
     def __unicode__(self):
         return '{0}'.format(self.title)
 
@@ -129,6 +134,11 @@ class GalleryCategory(models.Model):
     def __unicode__(self):
         return self.name
 
+    class Meta:
+        ordering = ('sug', )
+        verbose_name = _('Gallery Category')
+        verbose_name_plural = _('Gallery Categories')
+
 
 class GalleryImageExtension(models.Model):
     """
@@ -147,6 +157,10 @@ class GalleryImageExtension(models.Model):
         default=False,
         verbose_name=_('Is featured image'),
     )
+
+    class Meta:
+        verbose_name = _('Gallery Image Extension')
+        verbose_name_plural = _('Gallery Image Extensions')
 
 
 class GalleryPlugin(CMSPlugin):

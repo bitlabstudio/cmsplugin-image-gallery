@@ -1,5 +1,9 @@
 === ongoing ===
 
+=== 0.6.1 ===
+
+- Added german translation
+
 === 0.6 ===
 
 - Added display_type to GalleryPlugin model

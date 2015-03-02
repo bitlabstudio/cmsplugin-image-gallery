@@ -1,5 +1,9 @@
 === ongoing ===
 
+=== 0.6.3 ===
+
+- Fixed unicode function
+
 === 0.6.2 ===
 
 - Fixed category ordering

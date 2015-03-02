@@ -67,7 +67,7 @@ class Gallery(models.Model):
         verbose_name_plural = _('Galleries')
 
     def __unicode__(self):
-        return u'{0}'.format(self.title)
+        return self.title
 
     def get_absolute_url(self):
         return reverse('image_gallery_detail', kwargs={'pk': self.pk, })

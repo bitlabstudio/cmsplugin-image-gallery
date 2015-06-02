@@ -9,7 +9,7 @@ Installation
 
 You need to install the following prerequisites in order to use this app::
 
-    pip install Django
+    pip install Django<=1.6
     pip install django-cms
     pip install django-filer
     pip install Pillow

@@ -31,5 +31,11 @@ setup(
         'django-coverage',
         'mock',
     ],
+    install_requires=[
+        'Django',
+        'django-cms',
+        'django-filer',
+        'Pillow',
+    ],
     test_suite='image_gallery.tests.runtests.runtests',
 )

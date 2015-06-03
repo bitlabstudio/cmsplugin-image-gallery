@@ -1,5 +1,7 @@
 === ongoing ===
 
+- Prepared app for Django>=1.7
+
 === 0.6.3 ===
 
 - Fixed unicode function

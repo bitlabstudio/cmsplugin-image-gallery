@@ -3,22 +3,21 @@
 # ===========================================================================
 # Packages essential to this app. Needed by anyone who wants to use this app.
 # ===========================================================================
-Django==1.4.5
-django-cms==2.3.5
-django-filer==0.9.3
-Pillow==1.7.8
-South==0.7.6
+Django==1.7.8
+django-cms==3.1.0
+django-filer==0.9.10
+Pillow==2.8.1
 
 
 # ==============================================================
 # Packages needed for running the tests. Needed by contributors.
 # ==============================================================
 Fabric
-factory_boy==2.1.1
+factory_boy
 mock
-django-nose==1.1
-coverage==3.5.3
-django-coverage==1.2.2
+django-nose
+coverage
+django-coverage
 django-libs
 flake8
 ipdb

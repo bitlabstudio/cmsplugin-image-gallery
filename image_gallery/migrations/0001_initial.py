@@ -1,3 +1,4 @@
+# flake8: noqa
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
@@ -9,8 +10,8 @@ import cms.models.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('cms', '__first__'),
-        ('filer', '__first__'),
+        ('cms', '0011_auto_20150419_1006'),
+        ('filer', '0002_auto_20150610_0336'),
     ]
 
     operations = [

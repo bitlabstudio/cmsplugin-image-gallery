@@ -46,19 +46,12 @@ COVERAGE_MODULE_EXCLUDES = [
 ]
 
 EXTERNAL_APPS = [
+    'djangocms_admin_style',
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.auth',
     'django.contrib.contenttypes',
-    'django.contrib.messages',
-    'django.contrib.sessions',
-    'django.contrib.staticfiles',
-    'django.contrib.sitemaps',
-    'django.contrib.sites',
-    'django.contrib.admin',
-    'django.contrib.admindocs',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
+    'django.contrib.humanize',
     'django.contrib.messages',
     'django.contrib.sessions',
     'django.contrib.staticfiles',
@@ -66,9 +59,8 @@ EXTERNAL_APPS = [
     'django.contrib.sites',
     'django_nose',
     'cms',
-    'mptt',
+    'treebeard',
     'sekizai',
-    'cms.plugins.text',
     'filer',
     'easy_thumbnails',
 ]
@@ -81,32 +73,35 @@ INSTALLED_APPS = EXTERNAL_APPS + INTERNAL_APPS
 
 COVERAGE_MODULE_EXCLUDES += EXTERNAL_APPS
 
+LANGUAGE_CODE = 'en'
 LANGUAGES = [
     ('en', 'English'),
 ]
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE_CLASSES = [
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'cms.middleware.multilingual.MultilingualURLMiddleware',
-    'cms.middleware.page.CurrentPageMiddleware',
+    # 'django.middleware.locale.LocaleMiddleware',
     'cms.middleware.user.CurrentUserMiddleware',
+    'cms.middleware.page.CurrentPageMiddleware',
     'cms.middleware.toolbar.ToolbarMiddleware',
-)
+    'cms.middleware.language.LanguageCookieMiddleware',
+]
 
 TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.request',
+    'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.debug',
     'django.core.context_processors.i18n',
     'django.core.context_processors.media',
     'django.core.context_processors.static',
-    'django.core.context_processors.request',
-    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.tz',
     'django.contrib.messages.context_processors.messages',
-    'cms.context_processors.media',
     'sekizai.context_processors.sekizai',
+    'cms.context_processors.cms_settings',
 )
 
 # django-cms settings
@@ -121,3 +116,5 @@ THUMBNAIL_PROCESSORS = (
     'filer.thumbnail_processors.scale_and_crop_with_subject_location',
     'easy_thumbnails.processors.filters',
 )
+
+SECRET_KEY = 'foo'

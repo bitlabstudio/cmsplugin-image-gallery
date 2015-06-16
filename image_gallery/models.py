@@ -183,3 +183,8 @@ class GalleryPlugin(CMSPlugin):
         choices=app_settings.DISPLAY_TYPE_CHOICES,
         blank=True,
     )
+    
+    columns = models.PositiveIntegerField(
+        default=0,
+        verbose_name=_('Number of Columns')
+    )

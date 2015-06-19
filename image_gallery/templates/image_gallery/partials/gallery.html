@@ -3,13 +3,12 @@
 {% if gallery.date or gallery.location|length > 0 %}
 <h2 class="imageGallery {{display_type}}">{% if gallery.date %}{{ gallery.date|date }}, {% endif %}{{ gallery.location }}</h2>
 {% endif %}
-{% if gallery.description|length > 0  %}
 {% render_placeholder gallery.description "description" %}
-{% endif %}
 <div class="imageGallery {{display_type}}">
     {% for image in gallery.get_folder_images %}
         <div class="imageGalleryItem {{display_type}}">
-            <img src="{% thumbnail image.file 200x200 crop upscale %}" alt="">
+            <img src="{% thumbnail image.file 200x200 crop upscale %}"
+                 alt="{% image.default_alt_text %}">
         </div>
     {% endfor %}
 </div>

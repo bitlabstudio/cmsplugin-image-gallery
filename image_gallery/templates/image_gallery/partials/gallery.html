@@ -4,7 +4,7 @@
 <h2 class="imageGallery {{display_type}}">{% if gallery.date %}{{ gallery.date|date }}, {% endif %}{{ gallery.location }}</h2>
 {% endif %}
 {% if gallery.description|length > 0  %}
-<p>{% render_placeholder gallery.description "description" %}</p>
+{% render_placeholder gallery.description "description" %}
 {% endif %}
 <div class="imageGallery {{display_type}}">
     {% for image in gallery.get_folder_images %}

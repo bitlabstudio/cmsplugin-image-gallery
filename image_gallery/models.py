@@ -184,7 +184,4 @@ class GalleryPlugin(CMSPlugin):
         blank=True,
     )
     
-    columns = models.PositiveIntegerField(
-        default=0,
-        verbose_name=_('Number of Columns')
-    )
+

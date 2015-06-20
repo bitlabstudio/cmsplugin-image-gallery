@@ -8,7 +8,7 @@
     {% for image in gallery.get_folder_images %}
         <div class="imageGalleryItem {{display_type}}">
             <img src="{% thumbnail image.file 200x200 crop upscale %}"
-                 alt="{{ image.default_alt_text }}">
+                 alt="{{ image.default_alt_text }}" title="{{ image.name }}">
         </div>
     {% endfor %}
 </div>

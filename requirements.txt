@@ -4,7 +4,7 @@
 # Packages essential to this app. Needed by anyone who wants to use this app.
 # ===========================================================================
 Django==1.7.8
-django-cms==3.1.0
+django-cms==3.1.2
 django-filer==0.9.10
 Pillow==2.8.1
 

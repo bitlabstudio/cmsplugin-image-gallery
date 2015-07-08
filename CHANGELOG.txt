@@ -1,8 +1,12 @@
 === ongoing ===
 
-- Prepared app for Django>=1.7
 
-=== 0.6.3 ===
+=== 0.7.1 ===
+
+- Prepared app for Django>=1.7
+- Prepared app for django-cms>=3.1.2
+
+=== 0.6.X ===
 
 - Fixed unicode function
 

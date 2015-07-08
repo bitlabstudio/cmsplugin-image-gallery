@@ -1,4 +1,4 @@
-{% load i18n thumbnail placeholder_tags %}
+{% load i18n thumbnail cms_tags %}
 <h1>{{ gallery.title }}</h1>
 <h2>{% if gallery.date %}{{ gallery.date|date }}, {% endif %}{{ gallery.location }}</h2>
 <p>{% render_placeholder gallery.description "description" %}</p>

@@ -79,7 +79,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='gallery',
             name='description',
-            field=cms.models.fields.PlaceholderField(slotname=b'description', editable=False, to='cms.Placeholder', null=True, verbose_name='Description'),
+            field=cms.models.fields.PlaceholderField(slotname='description', editable=False, to='cms.Placeholder', null=True, verbose_name='Description'),
             preserve_default=True,
         ),
         migrations.AddField(

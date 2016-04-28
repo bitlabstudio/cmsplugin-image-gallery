@@ -1,13 +1,7 @@
 """Tests for the models of the ``image_gallery`` app."""
 from django.test import TestCase
 
-from ..models import Gallery
-from .factories import (
-    GalleryFactory,
-    GalleryCategoryFactory,
-    GalleryImageExtensionFactory,
-    GalleryPluginFactory,
-)
+from mixer.backend.django import mixer
 
 
 class GalleryTestCase(TestCase):
@@ -16,12 +10,12 @@ class GalleryTestCase(TestCase):
 
     def test_instantiation(self):
         """Test if the ``Gallery`` model instantiates."""
-        gallery = Gallery()
-        self.assertTrue(gallery, msg='Should be correctly instantiated.')
+        gallery = mixer.blend('image_gallery.Gallery')
+        self.assertTrue(str(gallery), msg='Should be correctly instantiated.')
 
     def test_get_folder_images(self):
         """Tests for the model's ``get_folder_images`` function."""
-        gallery = GalleryFactory()
+        gallery = mixer.blend('image_gallery.Gallery')
         self.assertEqual(gallery.get_folder_images().count(), 0, msg=(
             'Should return an empty image list.'))
 
@@ -31,8 +25,8 @@ class GalleryImageExtensionTestCase(TestCase):
     longMessage = True
 
     def test_instantiation(self):
-        obj = GalleryImageExtensionFactory()
-        self.assertTrue(obj, msg=(
+        obj = mixer.blend('image_gallery.GalleryImageExtension')
+        self.assertTrue(str(obj), msg=(
             'Should be able to instantiate and save the object.'))
 
 
@@ -42,8 +36,8 @@ class GalleryCategoryTestCase(TestCase):
 
     def test_instantiation(self):
         """Test instantiation of the ``GalleryCategory`` model."""
-        gallerycategory = GalleryCategoryFactory()
-        self.assertTrue(gallerycategory.pk)
+        gallerycategory = mixer.blend('image_gallery.GalleryCategory')
+        self.assertTrue(str(gallerycategory))
 
 
 class GalleryPluginTestCase(TestCase):
@@ -52,5 +46,5 @@ class GalleryPluginTestCase(TestCase):
 
     def test_instantiation(self):
         """Test instantiation of the ``GalleryPlugin`` model."""
-        galleryplugin = GalleryPluginFactory()
-        self.assertTrue(galleryplugin.pk)
+        galleryplugin = mixer.blend('image_gallery.GalleryPlugin')
+        self.assertTrue(str(galleryplugin))

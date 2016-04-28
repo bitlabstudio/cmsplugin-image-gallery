@@ -1,0 +1,7 @@
+fabric3
+coverage
+tox
+flake8
+mixer
+django-libs
+ipdb

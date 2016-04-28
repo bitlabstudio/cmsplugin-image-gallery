@@ -23,19 +23,10 @@ setup(
     url="https://github.com/bitmazk/cmsplugin-image-gallery",
     packages=find_packages(),
     include_package_data=True,
-    tests_require=[
-        'fabric',
-        'factory_boy',
-        'django-nose',
-        'coverage',
-        'django-coverage',
-        'mock',
-    ],
     install_requires=[
         'Django',
         'django-cms',
         'django-filer',
         'Pillow',
     ],
-    test_suite='image_gallery.tests.runtests.runtests',
 )

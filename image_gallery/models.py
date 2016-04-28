@@ -3,6 +3,7 @@ from itertools import chain
 
 from django.core.urlresolvers import reverse
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from cms.models import CMSPlugin
@@ -13,6 +14,7 @@ from filer.models.imagemodels import Image
 from . import app_settings
 
 
+@python_2_unicode_compatible
 class Gallery(models.Model):
     """
     Model to display a filer folder's contents and provide extra information.
@@ -66,7 +68,7 @@ class Gallery(models.Model):
         verbose_name = _('Gallery')
         verbose_name_plural = _('Galleries')
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
     def get_absolute_url(self):
@@ -113,6 +115,7 @@ class Gallery(models.Model):
             qs_files.filter(name='').order_by('file')))
 
 
+@python_2_unicode_compatible
 class GalleryCategory(models.Model):
     """
     Is used to categorize galleries.
@@ -131,7 +134,7 @@ class GalleryCategory(models.Model):
         verbose_name=_('Slug'),
     )
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     class Meta:

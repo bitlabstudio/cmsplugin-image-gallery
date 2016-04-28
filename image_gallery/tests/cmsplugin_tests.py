@@ -5,8 +5,9 @@ from django.template.context import RequestContext
 from django.test import TestCase
 from django.test.client import RequestFactory
 
-from image_gallery.cms_plugins import CMSGalleryPlugin
-from image_gallery.tests.factories import GalleryPluginFactory
+from mixer.backend.django import mixer
+
+from ..cms_plugins import CMSGalleryPlugin
 
 
 class CMSGalleryPluginTestCase(TestCase):
@@ -20,7 +21,7 @@ class CMSGalleryPluginTestCase(TestCase):
         SessionMiddleware().process_request(request)
         request.session.save()
         self.context = RequestContext(request)
-        self.plugin = GalleryPluginFactory()
+        self.plugin = mixer.blend('image_gallery.GalleryPlugin')
         self.cmsplugin = CMSGalleryPlugin()
 
     def test_render(self):

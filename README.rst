@@ -1,7 +1,7 @@
 CMSplugin Image Gallery
 ====================
 
-A Django application adding filer-based galleries to Django-CMS.
+A Django application adding django-filer-based galleries to Django-CMS.
 
 
 Installation

@@ -26,6 +26,8 @@ Add ``image_gallery`` to your ``INSTALLED_APPS``::
 
     INSTALLED_APPS = (
         ...,
+        'easy_thumbnails',
+        'filer',
         'image_gallery',
     )
 

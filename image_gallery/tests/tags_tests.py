@@ -5,7 +5,7 @@ from django.template.context import RequestContext
 from django.test import TestCase
 from django.test.client import RequestFactory
 
-from mixer.backend.django import mixer
+from model_bakery import baker
 
 from ..templatetags.image_gallery_tags import render_pictures
 
@@ -21,8 +21,8 @@ class RenderPicturesTestCase(TestCase):
         SessionMiddleware().process_request(request)
         request.session.save()
         self.context = RequestContext(request)
-        self.gallery = mixer.blend('image_gallery.Gallery', is_published=True,
-                                   folder=mixer.blend('filer.Folder'))
+        self.gallery = baker.make('image_gallery.Gallery', is_published=True,
+                                  folder=baker.make('filer.Folder'))
 
     def test_tag(self):
         # Returns None, because of an invalid selection name
@@ -32,14 +32,14 @@ class RenderPicturesTestCase(TestCase):
         self.assertFalse(render_pictures(self.context).get('pictures'))
 
         # Returns two pictures
-        mixer.blend('filer.Image', folder=self.gallery.folder)
-        mixer.blend('filer.Image', folder=self.gallery.folder)
+        baker.make('filer.Image', folder=self.gallery.folder)
+        baker.make('filer.Image', folder=self.gallery.folder)
         self.assertEqual(
             render_pictures(self.context).get('pictures').count(), 2)
 
         # Returns one picture, because amount was set to `1`
-        mixer.blend('filer.Image', folder=self.gallery.folder)
-        mixer.blend('filer.Image', folder=self.gallery.folder)
+        baker.make('filer.Image', folder=self.gallery.folder)
+        baker.make('filer.Image', folder=self.gallery.folder)
         self.assertEqual(render_pictures(self.context, 'recent', 1).get(
             'pictures').count(), 1)
 

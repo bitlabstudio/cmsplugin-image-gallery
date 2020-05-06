@@ -1,9 +1,8 @@
 """Models for the ``image_gallery`` app."""
 from itertools import chain
 
-from django.core.urlresolvers import reverse
 from django.db import models
-from django.utils.encoding import python_2_unicode_compatible
+from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from cms.models import CMSPlugin
@@ -14,7 +13,6 @@ from filer.models.imagemodels import Image
 from . import app_settings
 
 
-@python_2_unicode_compatible
 class Gallery(models.Model):
     """
     Model to display a filer folder's contents and provide extra information.
@@ -31,6 +29,7 @@ class Gallery(models.Model):
         'image_gallery.GalleryCategory',
         verbose_name=_('Category'),
         blank=True, null=True,
+        on_delete=models.SET_NULL,
     )
 
     title = models.CharField(
@@ -56,6 +55,7 @@ class Gallery(models.Model):
 
     folder = FilerFolderField(
         verbose_name=_('Folder'),
+        on_delete=models.CASCADE,
     )
 
     is_published = models.BooleanField(
@@ -115,7 +115,6 @@ class Gallery(models.Model):
             qs_files.filter(name='').order_by('file')))
 
 
-@python_2_unicode_compatible
 class GalleryCategory(models.Model):
     """
     Is used to categorize galleries.
@@ -154,6 +153,7 @@ class GalleryImageExtension(models.Model):
     image = models.OneToOneField(
         Image,
         verbose_name=_('Image'),
+        on_delete=models.CASCADE,
     )
 
     is_featured_image = models.BooleanField(
@@ -179,6 +179,7 @@ class GalleryPlugin(CMSPlugin):
     gallery = models.ForeignKey(
         Gallery,
         verbose_name=_('Gallery'),
+        on_delete=models.CASCADE,
     )
 
     display_type = models.CharField(

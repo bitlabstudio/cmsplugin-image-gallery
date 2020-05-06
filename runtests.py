@@ -9,10 +9,10 @@ import re
 from fabric.api import local, warn
 from fabric.colors import green, red
 
-
 if __name__ == '__main__':
-    local('flake8 --ignore=E126 --ignore=W391 --statistics'
-          ' --exclude=submodules,south_migrations,migrations,build .')
+    local('flake8 --ignore=E126 --ignore=W391 --ignore=F405 --statistics'
+          ' --exclude=submodules,south_migrations,migrations,build'
+          ',dist,site-packages,.tox .')
     local('coverage run --source="image_gallery" manage.py test -v 2'
           ' --traceback --failfast'
           ' --settings=image_gallery.tests.settings'

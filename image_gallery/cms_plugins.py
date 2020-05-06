@@ -21,4 +21,5 @@ class CMSGalleryPlugin(CMSPluginBase):
         })
         return context
 
+
 plugin_pool.register_plugin(CMSGalleryPlugin)

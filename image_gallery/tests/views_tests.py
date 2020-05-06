@@ -2,9 +2,13 @@
 from django.test import TestCase
 
 from django_libs.tests.mixins import ViewRequestFactoryTestMixin
-from mixer.backend.django import mixer
+from model_bakery import baker
 
+from .utils import generate_filer_folder
 from .. import views
+
+baker.generators.add('filer.fields.folder.FilerFolderField',
+                     generate_filer_folder)
 
 
 class GalleryListViewTestCase(ViewRequestFactoryTestMixin, TestCase):
@@ -12,9 +16,9 @@ class GalleryListViewTestCase(ViewRequestFactoryTestMixin, TestCase):
     view_class = views.GalleryListView
 
     def setUp(self):
-        self.gallery = mixer.blend(
+        self.gallery = baker.make(
             'image_gallery.Gallery',
-            category=mixer.blend('image_gallery.GalleryCategory'))
+            category=baker.make('image_gallery.GalleryCategory'))
 
     def test_view(self):
         self.is_callable()

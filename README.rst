@@ -31,11 +31,6 @@ Add ``image_gallery`` to your ``INSTALLED_APPS``::
         'image_gallery',
     )
 
-If you are using a Django version below 1.7, add the following setting::
-
-    SOUTH_MIGRATION_MODULES = {
-        'image_gallery': 'image_gallery.south_migrations',
-    }
 
 Usage
 -----

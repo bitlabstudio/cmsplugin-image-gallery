@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
     dependencies = [
         migrations.swappable_dependency(settings.FILER_IMAGE_MODEL),
         ('filer', '0011_auto_20190418_0137'),
-        ('cms', '0022_auto_20180620_1551'),
+        # ('cms', '0022_auto_20180620_1551'),
     ]
 
     operations = [

@@ -8,3 +8,4 @@ dist/
 static/
 media/
 .idea/
+.DS_Store

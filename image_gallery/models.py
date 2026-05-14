@@ -1,9 +1,10 @@
 """Models for the ``image_gallery`` app."""
+
 from itertools import chain
 
 from django.db import models
 from django.urls import reverse
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from cms.models import CMSPlugin
 from cms.models.fields import PlaceholderField
@@ -25,54 +26,63 @@ class Gallery(models.Model):
     :is_published: True if the Gallery is published or not.
 
     """
+
     category = models.ForeignKey(
-        'image_gallery.GalleryCategory',
-        verbose_name=_('Category'),
-        blank=True, null=True,
+        "image_gallery.GalleryCategory",
+        verbose_name=_("Category"),
+        blank=True,
+        null=True,
         on_delete=models.SET_NULL,
     )
 
     title = models.CharField(
         max_length=100,
-        verbose_name=_('Title'),
+        verbose_name=_("Title"),
     )
 
     date = models.DateTimeField(
-        verbose_name=_('Date'),
-        blank=True, null=True,
+        verbose_name=_("Date"),
+        blank=True,
+        null=True,
     )
 
     location = models.CharField(
         max_length=100,
-        verbose_name=_('Location'),
-        blank=True, null=True,
+        verbose_name=_("Location"),
+        blank=True,
+        null=True,
     )
 
     description = PlaceholderField(
-        'description',
-        verbose_name=_('Description'),
+        "description",
+        verbose_name=_("Description"),
     )
 
     folder = FilerFolderField(
-        verbose_name=_('Folder'),
+        verbose_name=_("Folder"),
         on_delete=models.CASCADE,
     )
 
     is_published = models.BooleanField(
-        verbose_name=_('Is published'),
+        verbose_name=_("Is published"),
         default=False,
     )
 
     class Meta:
-        ordering = ('title', )
-        verbose_name = _('Gallery')
-        verbose_name_plural = _('Galleries')
+        ordering = ("title",)
+        verbose_name = _("Gallery")
+        verbose_name_plural = _("Galleries")
 
     def __str__(self):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('image_gallery_detail', kwargs={'pk': self.pk, })
+        return reverse(
+            "image_gallery_detail",
+            kwargs={
+                "pk": self.pk,
+            },
+        )
 
     def get_featured_images(self):
         """
@@ -110,9 +120,12 @@ class Gallery(models.Model):
         """
         qs_files = self.folder.files.instance_of(Image)
         qs_files = qs_files.filter(is_public=True)
-        return list(chain(
-            qs_files.exclude(name='').order_by('name'),
-            qs_files.filter(name='').order_by('file')))
+        return list(
+            chain(
+                qs_files.exclude(name="").order_by("name"),
+                qs_files.filter(name="").order_by("file"),
+            )
+        )
 
 
 class GalleryCategory(models.Model):
@@ -123,23 +136,24 @@ class GalleryCategory(models.Model):
     :slug: The slug of the category
 
     """
+
     name = models.CharField(
         max_length=256,
-        verbose_name=_('Name'),
+        verbose_name=_("Name"),
     )
 
     slug = models.SlugField(
         max_length=32,
-        verbose_name=_('Slug'),
+        verbose_name=_("Slug"),
     )
 
     def __str__(self):
         return self.name
 
     class Meta:
-        ordering = ('slug', )
-        verbose_name = _('Gallery Category')
-        verbose_name_plural = _('Gallery Categories')
+        ordering = ("slug",)
+        verbose_name = _("Gallery Category")
+        verbose_name_plural = _("Gallery Categories")
 
 
 class GalleryImageExtension(models.Model):
@@ -150,20 +164,21 @@ class GalleryImageExtension(models.Model):
     :is_featured_image: A boolean field that can be used for example to render
       a teaser of a gallery and only show a few featured images.
     """
+
     image = models.OneToOneField(
         Image,
-        verbose_name=_('Image'),
+        verbose_name=_("Image"),
         on_delete=models.CASCADE,
     )
 
     is_featured_image = models.BooleanField(
         default=False,
-        verbose_name=_('Is featured image'),
+        verbose_name=_("Is featured image"),
     )
 
     class Meta:
-        verbose_name = _('Gallery Image Extension')
-        verbose_name_plural = _('Gallery Image Extensions')
+        verbose_name = _("Gallery Image Extension")
+        verbose_name_plural = _("Gallery Image Extensions")
 
 
 class GalleryPlugin(CMSPlugin):
@@ -176,9 +191,10 @@ class GalleryPlugin(CMSPlugin):
       page.
 
     """
+
     gallery = models.ForeignKey(
         Gallery,
-        verbose_name=_('Gallery'),
+        verbose_name=_("Gallery"),
         on_delete=models.CASCADE,
     )
 
